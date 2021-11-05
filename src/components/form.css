@@ -1,0 +1,30 @@
+form {
+  border: solid 1px blue;
+  background-color: rgb(104, 100, 100);
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+label {
+  border: solid 1px green;
+
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+#trunfo-input-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+
+#save-button-container {
+  align-items: center;
+}
+
+form label button {
+  width: 40%;
+}
