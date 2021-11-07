@@ -22,7 +22,8 @@ label {
 }
 
 #save-button-container {
-  align-items: center;
+  border: solid 1px blue;
+  text-align: center;
 }
 
 form label button {

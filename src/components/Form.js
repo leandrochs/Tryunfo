@@ -103,7 +103,6 @@ class Form extends React.Component {
           />
         </label>
         <div id="save-button-container">
-          Confirme os dados
           <button
             id="save-button"
             type="submit"
