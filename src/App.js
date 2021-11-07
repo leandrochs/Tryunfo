@@ -14,6 +14,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: true,
+      isSaveButtonDisabled: true,
     };
   }
 
@@ -27,15 +28,16 @@ class App extends React.Component {
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
-    console.log("helloo");
+    console.log('helloo');
   }
 
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo } = this.state;
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
+      cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form 
+        <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
@@ -44,10 +46,11 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo={ true }
-          isSaveButtonDisabled={ true }
+          hasTrunfo={ hasTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick } />
+          onSaveButtonClick={ this.onSaveButtonClick }
+        />
       </div>
     );
   }
