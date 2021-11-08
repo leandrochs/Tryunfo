@@ -70,7 +70,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Tryunfo</h1>
-        <section class="first-section-container">
+        <section className="first-section-container">
           <Form
             cardName={ cardName }
             cardDescription={ cardDescription }

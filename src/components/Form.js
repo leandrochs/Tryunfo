@@ -94,7 +94,7 @@ class Form extends React.Component {
         <label id="trunfo-input-container" htmlFor="trunfo-input">
           Selecionar se a carta for o Super Trunfo
           <input
-            class="trunfo-input"
+            className="trunfo-input"
             type="checkbox"
             data-testid="trunfo-input"
             name="cardTrunfo"
@@ -102,7 +102,7 @@ class Form extends React.Component {
             checked={ cardTrunfo }
           />
         </label>
-        <div class="button-container">
+        <div className="button-container">
           <button
             id="save-button"
             type="submit"
