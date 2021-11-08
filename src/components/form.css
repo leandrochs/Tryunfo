@@ -1,5 +1,4 @@
 form {
-  border: solid 1px blue;
   background-color: rgb(104, 100, 100);
   display: flex;
   flex-direction: column;
@@ -8,21 +7,18 @@ form {
 
 label {
   border: solid 1px green;
-
-  margin: 2%;
   display: flex;
   flex-direction: column;
-
+  margin: 2%;
 }
 
-#trunfo-input-container {
+.trunfo-input-container {
   display: flex;
   flex-direction: row-reverse;
   justify-content: left;
 }
 
-#save-button-container {
-  border: solid 1px blue;
+.button-container {
   text-align: center;
 }
 

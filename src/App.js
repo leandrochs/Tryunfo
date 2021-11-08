@@ -14,11 +14,38 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: true,
-      isSaveButtonDisabled: true,
     };
+  }
+
+  filledData = () => {
+    const { cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage } = this.state;
+
+    const verify = cardName === '' || cardDescription === '' || cardAttr1 === ''
+      || cardAttr2 === '' || cardAttr3 === '' || cardImage === '';
+
+    const n1 = parseInt(cardAttr1, 10);
+    const n2 = parseInt(cardAttr2, 10);
+    const n3 = parseInt(cardAttr3, 10);
+
+    const minValue = 0;
+    const maxValue = 90;
+
+    const verifyValues = n1 >= minValue && n1 <= maxValue
+      && n2 >= minValue && n2 <= maxValue
+      && n3 >= minValue && n3 <= maxValue;
+
+    const maxSum = 210;
+
+    const verifyLength = (n1 + n2 + n3) <= maxSum;
+
+    if (!verify && verifyValues && verifyLength) {
+      return false;
+    }
+    return true;
   }
 
   onInputChange = ({ target }) => {
@@ -36,11 +63,14 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled } = this.state;
+      cardRare, cardTrunfo, hasTrunfo } = this.state;
+
+    const isSaveButtonDisabled = this.filledData();
+
     return (
       <div>
         <h1>Tryunfo</h1>
-        <section id="first-section-container">
+        <section class="first-section-container">
           <Form
             cardName={ cardName }
             cardDescription={ cardDescription }
