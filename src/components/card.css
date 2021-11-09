@@ -1,4 +1,80 @@
 .card-container {
-  width: 40%;
-  
+  align-items: center;
+  background-color: rgb(79, 131, 55);
+  border: solid 4px rgb(238, 239, 243);
+  border-radius: 20px;
+  display: flex;
+  height: 400px;
+  justify-content: center;
+  width: 250px;
+}
+
+.card-border {
+  border-radius: 10px;
+  height: 96%;
+  width: 95%;
+}
+
+.cardName {
+  background-color: rgb(22, 39, 21);
+  border-radius: 10px 10px 0 0;
+  color: aliceblue;
+  height: 29px;
+  padding-bottom: 8px;
+  text-align: end;
+  width: 100%;
+}
+
+.cardName h2 {
+  margin: 0;
+  padding: 7px;
+}
+
+.card-border img {
+  height: 150px;
+  width: 100%;
+}
+
+.cardDescription {
+  align-items: center;
+  background-color: rgb(79, 131, 55);
+  color: aliceblue;
+  display: flex;
+  font-size: smaller;
+  height: 45px;
+  justify-content: center;
+  margin-top: -9px;
+  text-align: center;
+  transform: skewY(-3deg);
+  width: 100%;
+}
+
+.attr-container {
+  display: flex;
+  font-size: small;
+  justify-content: space-around;
+}
+
+.attr-container p {
+  margin: 4px;
+}
+
+.attr-section-container {
+  background-color: aliceblue;
+  border-radius: 0 0 10px 10px;
+  margin-top: -7px;
+  padding: 20px 0 9px;
+  text-align: center;
+}
+
+.cardRare {
+  margin-top: 6%;
+}
+
+.trunfo-card {
+  text-align: center;
+}
+
+.trunfo-card h2 {
+  margin-top: 5px;
 }

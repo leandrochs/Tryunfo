@@ -1,6 +1,16 @@
 .first-section-container {
+  align-items: center;
   background-color: rgb(46, 46, 66);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.second-section-container {
+  align-items: center;
+  background-color: rgb(39, 39, 43);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: 500px;
 }

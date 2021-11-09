@@ -8,15 +8,31 @@ class Card extends React.Component {
       cardRare, cardTrunfo, hasTrunfo } = this.props;
     return (
       <div className="card-container">
-        <div data-testid="name-card">{ cardName }</div>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <div data-testid="description-card">{ cardDescription }</div>
-        <div data-testid="attr1-card">{ cardAttr1 }</div>
-        <div data-testid="attr2-card">{ cardAttr2 }</div>
-        <div data-testid="attr3-card">{ cardAttr3 }</div>
-        <div data-testid="rare-card">{ cardRare }</div>
-        <div>
-          {(cardTrunfo && !hasTrunfo) ? <p data-testid="trunfo-card">Super Trunfo</p> : <p> </p>}
+        <div className="card-border">
+          <div className="cardName" data-testid="name-card"><h2>{ cardName }</h2></div>
+          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+          <div className="cardDescription" data-testid="description-card">
+            { cardDescription }
+          </div>
+          <section className="attr-section-container">
+            <div className="attr-container">
+              <p>atrib. 1</p>
+              <p data-testid="attr1-card">{ cardAttr1 }</p>
+            </div>
+            <div className="attr-container">
+              <p>atrib. 2</p>
+              <p data-testid="attr2-card">{ cardAttr2 }</p>
+            </div>
+            <div className="attr-container">
+              <p>atrib. 3</p>
+              <p data-testid="attr3-card">{ cardAttr3 }</p>
+            </div>
+            <div className="cardRare" data-testid="rare-card">{ cardRare }</div>
+          </section>
+          <div className="trunfo-card">
+            {(cardTrunfo && !hasTrunfo)
+              ? <h2 data-testid="trunfo-card">Super Trunfo</h2> : <p> </p>}
+          </div>
         </div>
       </div>
     );
@@ -32,6 +48,7 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Card;

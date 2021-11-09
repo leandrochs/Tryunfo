@@ -70,10 +70,10 @@ class App extends React.Component {
 
     this.setState(() => ({
       hasTrunfo: verify,
-    }))
+    }));
   }
 
-  saveNewCard = (event) => { //Dispara quando clica em salvar
+  saveNewCard = (event) => {
     event.preventDefault();
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo } = this.state;
@@ -102,7 +102,7 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, hasTrunfo } = this.state;
+      cardRare, cardTrunfo, hasTrunfo, cards } = this.state;
 
     const isSaveButtonDisabled = this.filledData();
     const onSaveButtonClick = this.saveNewCard;
@@ -137,6 +137,22 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
             hasTrunfo={ hasTrunfo }
           />
+        </section>
+        <section className="second-section-container">
+          {cards.map((card) => (
+            <Card
+              key={ card.cardImage }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+              hasTrunfo={ card.hasTrunfo }
+            />
+          ))}
         </section>
       </div>
     );
