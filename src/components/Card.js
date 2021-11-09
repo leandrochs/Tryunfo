@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class Card extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo } = this.props;
+      cardRare, cardTrunfo, hasTrunfo } = this.props;
     return (
       <div className="card-container">
         <div data-testid="name-card">{ cardName }</div>
@@ -16,7 +16,7 @@ class Card extends React.Component {
         <div data-testid="attr3-card">{ cardAttr3 }</div>
         <div data-testid="rare-card">{ cardRare }</div>
         <div>
-          {cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : <p> </p>}
+          {(cardTrunfo && !hasTrunfo) ? <p data-testid="trunfo-card">Super Trunfo</p> : <p> </p>}
         </div>
       </div>
     );

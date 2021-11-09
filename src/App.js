@@ -16,7 +16,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: true,
+      hasTrunfo: false,
       cards: [],
     };
   }
@@ -57,7 +57,23 @@ class App extends React.Component {
     });
   }
 
-  saveNewCard = (event) => {
+  // setHasTrunfo = (verrify) => {
+  //   this.setState(() => ({
+  //     cardTrunfo: false,
+  //     hasTrunfo: verrify,
+  //   }));
+  // }
+
+  hasTrunfoVerify = () => {
+    const { cards } = this.state;
+    const verify = cards.some(({ cardTrunfo }) => cardTrunfo);
+
+    this.setState(() => ({
+      hasTrunfo: verify,
+    }))
+  }
+
+  saveNewCard = (event) => { //Dispara quando clica em salvar
     event.preventDefault();
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo } = this.state;
@@ -81,8 +97,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: true,
-    }));
+    }), () => this.hasTrunfoVerify());
   }
 
   render() {
@@ -91,6 +106,7 @@ class App extends React.Component {
 
     const isSaveButtonDisabled = this.filledData();
     const onSaveButtonClick = this.saveNewCard;
+    // const hasTrunfo = this.hasTrunfoVerify();
 
     return (
       <div>
@@ -119,6 +135,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
           />
         </section>
       </div>
