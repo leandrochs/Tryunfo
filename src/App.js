@@ -57,13 +57,6 @@ class App extends React.Component {
     });
   }
 
-  // setHasTrunfo = (verrify) => {
-  //   this.setState(() => ({
-  //     cardTrunfo: false,
-  //     hasTrunfo: verrify,
-  //   }));
-  // }
-
   hasTrunfoVerify = () => {
     const { cards } = this.state;
     const verify = cards.some(({ cardTrunfo }) => cardTrunfo);
@@ -100,13 +93,17 @@ class App extends React.Component {
     }), () => this.hasTrunfoVerify());
   }
 
+  deleteCard = (id) => {
+    console.log(id);
+  }
+
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo, hasTrunfo, cards } = this.state;
 
     const isSaveButtonDisabled = this.filledData();
     const onSaveButtonClick = this.saveNewCard;
-    // const hasTrunfo = this.hasTrunfoVerify();
 
     return (
       <div>
@@ -140,18 +137,28 @@ class App extends React.Component {
         </section>
         <section className="second-section-container">
           {cards.map((card) => (
-            <Card
-              key={ card.cardImage }
-              cardName={ card.cardName }
-              cardDescription={ card.cardDescription }
-              cardAttr1={ card.cardAttr1 }
-              cardAttr2={ card.cardAttr2 }
-              cardAttr3={ card.cardAttr3 }
-              cardImage={ card.cardImage }
-              cardRare={ card.cardRare }
-              cardTrunfo={ card.cardTrunfo }
-              hasTrunfo={ card.hasTrunfo }
-            />
+            <div key={ card.cardImage } className="card-removeButton-container">
+              <Card
+                // key={ card.cardImage }
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+                hasTrunfo={ hasTrunfo }
+              />
+              <button
+                id={card.cardImage}
+                type="reset"
+                onClick={ this.deleteCard }
+                data-testid="delete-button"
+              >
+                Excluir
+              </button>
+            </div>
           ))}
         </section>
       </div>

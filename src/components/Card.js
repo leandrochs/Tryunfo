@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class Card extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, hasTrunfo } = this.props;
+      cardRare, cardTrunfo } = this.props;
     return (
       <div className="card-container">
         <div className="card-border">
@@ -30,7 +30,8 @@ class Card extends React.Component {
             <div className="cardRare" data-testid="rare-card">{ cardRare }</div>
           </section>
           <div className="trunfo-card">
-            {(cardTrunfo && !hasTrunfo)
+            {/* {(cardTrunfo && !hasTrunfo) */}
+            {(cardTrunfo)
               ? <h2 data-testid="trunfo-card">Super Trunfo</h2> : <p> </p>}
           </div>
         </div>
@@ -48,7 +49,7 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Card;

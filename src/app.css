@@ -14,3 +14,11 @@
   justify-content: space-evenly;
   min-height: 500px;
 }
+
+.card-removeButton-container {
+  text-align: center;
+}
+
+.card-removeButton-container button {
+  margin-top: 10px;
+}
