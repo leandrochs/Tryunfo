@@ -1,8 +1,10 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import Namefilter from './components/Namefilter';
 
 import './app.css';
+import Showcards from './components/Showcards';
 
 class App extends React.Component {
   constructor() {
@@ -18,6 +20,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       cards: [],
+      namefilter: '',
     };
   }
 
@@ -102,7 +105,7 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, hasTrunfo, cards } = this.state;
+      cardRare, cardTrunfo, hasTrunfo, cards, namefilter } = this.state;
 
     const isSaveButtonDisabled = this.filledData();
     const onSaveButtonClick = this.saveNewCard;
@@ -138,30 +141,16 @@ class App extends React.Component {
           />
         </section>
         <section className="second-section-container">
-          {cards.map((card) => (
-            <div key={ card.cardImage } className="card-removeButton-container">
-              <Card
-                // key={ card.cardImage }
-                cardName={ card.cardName }
-                cardDescription={ card.cardDescription }
-                cardAttr1={ card.cardAttr1 }
-                cardAttr2={ card.cardAttr2 }
-                cardAttr3={ card.cardAttr3 }
-                cardImage={ card.cardImage }
-                cardRare={ card.cardRare }
-                cardTrunfo={ card.cardTrunfo }
-                hasTrunfo={ hasTrunfo }
-              />
-              <button
-                id={ card.cardImage }
-                type="reset"
-                onClick={ this.deleteCard }
-                data-testid="delete-button"
-              >
-                Excluir
-              </button>
-            </div>
-          ))}
+          <Namefilter
+            namefilter={ namefilter }
+            onInputChange={ this.onInputChange }
+          />
+          <Showcards
+            cards={ cards }
+            hasTrunfo={ hasTrunfo }
+            deleteCard={ this.deleteCard }
+          />
+
         </section>
       </div>
     );
