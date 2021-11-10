@@ -21,6 +21,7 @@ class App extends React.Component {
       hasTrunfo: false,
       cards: [],
       namefilter: '',
+      filteredCards: [],
     };
   }
 
@@ -98,14 +99,19 @@ class App extends React.Component {
 
   deleteCard = ({ target }) => {
     const { cards } = this.state;
-    const filteredCards = cards.filter(({ cardImage }) => cardImage !== target.id);
+    const undeletedCards = cards.filter(({ cardImage }) => cardImage !== target.id);
+    this.setState({ cards: undeletedCards }, () => this.hasTrunfoVerify());
+  }
 
-    this.setState({ cards: filteredCards }, () => this.hasTrunfoVerify());
+  filterButton =() => {
+    const { cards, namefilter } = this.state;
+    const filtered = cards.filter(({ cardName }) => cardName.includes(namefilter));
+    this.setState({ filteredCards: filtered });
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, hasTrunfo, cards, namefilter } = this.state;
+      cardRare, cardTrunfo, hasTrunfo, cards, namefilter, filteredCards } = this.state;
 
     const isSaveButtonDisabled = this.filledData();
     const onSaveButtonClick = this.saveNewCard;
@@ -144,13 +150,12 @@ class App extends React.Component {
           <Namefilter
             namefilter={ namefilter }
             onInputChange={ this.onInputChange }
+            filterButton={ this.filterButton }
           />
           <Showcards
-            cards={ cards }
-            hasTrunfo={ hasTrunfo }
+            cards={ (namefilter === '') ? cards : filteredCards }
             deleteCard={ this.deleteCard }
           />
-
         </section>
       </div>
     );

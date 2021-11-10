@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card';
 
 class Showcards extends React.Component {
   render() {
-
-    const { cards, hasTrunfo, deleteCard } = this.props;
+    const { cards, deleteCard } = this.props;
 
     return (
       cards.map((card) => (
@@ -18,7 +18,6 @@ class Showcards extends React.Component {
             cardImage={ card.cardImage }
             cardRare={ card.cardRare }
             cardTrunfo={ card.cardTrunfo }
-            hasTrunfo={ hasTrunfo }
           />
           <button
             id={ card.cardImage }
@@ -30,8 +29,13 @@ class Showcards extends React.Component {
           </button>
         </div>
       ))
-    )
+    );
   }
 }
+
+Showcards.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteCard: PropTypes.func.isRequired,
+};
 
 export default Showcards;
