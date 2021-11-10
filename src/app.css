@@ -1,24 +1,45 @@
+.title {
+  color: aliceblue;
+  text-align: center;
+}
+
 .first-section-container {
   align-items: center;
   background-color: rgb(46, 46, 66);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  padding: 5% 0;
 }
 
 .second-section-container {
-  align-items: center;
   background-color: rgb(39, 39, 43);
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   min-height: 500px;
+  padding-top: 10%;
 }
 
 .card-removeButton-container {
+  margin: 10px;
   text-align: center;
 }
 
 .card-removeButton-container button {
   margin-top: 10px;
+}
+
+.filters-container {
+  height: 100%;
+  margin: 0 10%;
+}
+
+.filters-container h2, h3 {
+  color: aliceblue;
+}
+
+.showcards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
 }

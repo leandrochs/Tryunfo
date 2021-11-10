@@ -5,6 +5,8 @@ import Namefilter from './components/Namefilter';
 
 import './app.css';
 import Showcards from './components/Showcards';
+import Rarefilter from './components/Rarefilter';
+import Trunfofilter from './components/Trunfofilter';
 
 class App extends React.Component {
   constructor() {
@@ -22,6 +24,9 @@ class App extends React.Component {
       cards: [],
       namefilter: '',
       filteredCards: [],
+      rarefilter: '',
+      trunfofilter: false,
+      hasFilered: false,
     };
   }
 
@@ -58,7 +63,7 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, () => this.filterButton());
   }
 
   hasTrunfoVerify = () => {
@@ -103,22 +108,45 @@ class App extends React.Component {
     this.setState({ cards: undeletedCards }, () => this.hasTrunfoVerify());
   }
 
+  showFiltered = (rareFiltered) => {
+    this.setState({ filteredCards: rareFiltered });
+  }
+
   filterButton =() => {
-    const { cards, namefilter } = this.state;
-    const filtered = cards.filter(({ cardName }) => cardName.includes(namefilter));
-    this.setState({ filteredCards: filtered });
+    let rareFiltered = [];
+    let nameFiltered = [];
+    let trunfoFiltered = [];
+    const { cards, namefilter, rarefilter, trunfofilter } = this.state;
+
+    if (rarefilter !== '' && rarefilter !== 'Raridade' && rarefilter !== 'todas') {
+      rareFiltered = cards.filter(({ cardRare }) => cardRare === rarefilter);
+      this.setState({ hasFilered: true });
+    } else { rareFiltered = cards; }
+
+    if (namefilter !== '') {
+      nameFiltered = rareFiltered.filter(({ cardName }) => cardName.includes(namefilter));
+      this.setState({ hasFilered: true });
+    } else { nameFiltered = rareFiltered; }
+
+    if (trunfofilter === true) {
+      trunfoFiltered = nameFiltered.filter(({ cardTrunfo }) => cardTrunfo);
+      this.setState({ hasFilered: true });
+    } else { trunfoFiltered = nameFiltered; }
+
+    this.setState({ filteredCards: trunfoFiltered });
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, hasTrunfo, cards, namefilter, filteredCards } = this.state;
+      cardRare, cardTrunfo, hasTrunfo, cards, namefilter, filteredCards,
+      rarefilter, trunfofilter, hasFilered } = this.state;
 
     const isSaveButtonDisabled = this.filledData();
     const onSaveButtonClick = this.saveNewCard;
 
     return (
       <div>
-        <h1>Tryunfo</h1>
+        <h1 className="title">Tryunfo</h1>
         <section className="first-section-container">
           <Form
             cardName={ cardName }
@@ -147,15 +175,30 @@ class App extends React.Component {
           />
         </section>
         <section className="second-section-container">
-          <Namefilter
-            namefilter={ namefilter }
-            onInputChange={ this.onInputChange }
-            filterButton={ this.filterButton }
-          />
-          <Showcards
-            cards={ (namefilter === '') ? cards : filteredCards }
-            deleteCard={ this.deleteCard }
-          />
+          <div className="filters-container">
+            <h2>Todas as Cartas</h2>
+            <h3>Filtros de Busca</h3>
+            <Namefilter
+              namefilter={ namefilter }
+              onInputChange={ this.onInputChange }
+              filterButton={ this.filterButton }
+            />
+
+            <Rarefilter
+              rarefilter={ rarefilter }
+              onInputChange={ this.onInputChange }
+            />
+            <Trunfofilter
+              trunfofilter={ trunfofilter }
+              onInputChange={ this.onInputChange }
+            />
+          </div>
+          <div className="showcards">
+            <Showcards
+              cards={ (hasFilered) ? filteredCards : cards }
+              deleteCard={ this.deleteCard }
+            />
+          </div>
         </section>
       </div>
     );

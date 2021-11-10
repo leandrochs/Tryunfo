@@ -30,7 +30,6 @@ class Card extends React.Component {
             <div className="cardRare" data-testid="rare-card">{ cardRare }</div>
           </section>
           <div className="trunfo-card">
-            {/* {(cardTrunfo && !hasTrunfo) */}
             {(cardTrunfo)
               ? <h2 data-testid="trunfo-card">Super Trunfo</h2> : <p> </p>}
           </div>
