@@ -93,10 +93,12 @@ class App extends React.Component {
     }), () => this.hasTrunfoVerify());
   }
 
-  deleteCard = (id) => {
-    console.log(id);
-  }
+  deleteCard = ({ target }) => {
+    const { cards } = this.state;
+    const filteredCards = cards.filter(({ cardImage }) => cardImage !== target.id);
 
+    this.setState({ cards: filteredCards }, () => this.hasTrunfoVerify());
+  }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
@@ -151,7 +153,7 @@ class App extends React.Component {
                 hasTrunfo={ hasTrunfo }
               />
               <button
-                id={card.cardImage}
+                id={ card.cardImage }
                 type="reset"
                 onClick={ this.deleteCard }
                 data-testid="delete-button"
