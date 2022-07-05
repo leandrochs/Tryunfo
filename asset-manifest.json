@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Tryunfo/static/css/main.fa2ffff4.chunk.css",
+    "main.js": "/Tryunfo/static/js/main.5279782a.chunk.js",
+    "main.js.map": "/Tryunfo/static/js/main.5279782a.chunk.js.map",
+    "runtime-main.js": "/Tryunfo/static/js/runtime-main.98101638.js",
+    "runtime-main.js.map": "/Tryunfo/static/js/runtime-main.98101638.js.map",
+    "static/js/2.99a29aed.chunk.js": "/Tryunfo/static/js/2.99a29aed.chunk.js",
+    "static/js/2.99a29aed.chunk.js.map": "/Tryunfo/static/js/2.99a29aed.chunk.js.map",
+    "index.html": "/Tryunfo/index.html",
+    "static/css/main.fa2ffff4.chunk.css.map": "/Tryunfo/static/css/main.fa2ffff4.chunk.css.map",
+    "static/js/2.99a29aed.chunk.js.LICENSE.txt": "/Tryunfo/static/js/2.99a29aed.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.98101638.js",
+    "static/js/2.99a29aed.chunk.js",
+    "static/css/main.fa2ffff4.chunk.css",
+    "static/js/main.5279782a.chunk.js"
+  ]
+}
